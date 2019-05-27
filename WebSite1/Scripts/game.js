@@ -2,13 +2,15 @@
     var emptyValue;
     var boardSize;
 
+    var history = [];
+
     var getTile = function (x, y, i){
         var tile;
         if (i === 0 && (x + 1) < boardSize) {
             tile = $('#slot' + (x + 1) + y);
-        } else if (i === 1 && (x - 1) >= 0) {
+        } else if (i === 2 && (x - 1) >= 0) {
             tile = $('#slot' + (x - 1) + y);
-        } else if (i === 2 && (y + 1) < boardSize) {
+        } else if (i === 1 && (y + 1) < boardSize) {
             tile = $('#slot' + x + (y + 1));
         } else if (i === 3 && (y - 1) >= 0) {
             tile = $('#slot' + x + (y - 1));
@@ -18,6 +20,16 @@
         }
 
         return tile;
+    }
+
+    var historyBack = function () {
+        var emptyTile = getEmptyTile();
+        var emptyX = getX(emptyTile);
+        var emptyY = getY(emptyTile);
+        var i = history.pop();
+        var j = (i + 2) % 4;
+        var tileToMove = getTile(emptyX, emptyY, j);
+        swapTiles(emptyTile, tileToMove);
     }
 
     var getEmptyTile = function () {
@@ -36,6 +48,7 @@
         var tile = getTile(emptyX, emptyY, randomNumber);
         if (tile) {
             swapTiles(tile, emptyTile);
+            history.push(randomNumber);
             setTimeout(function () {
                 var dp = dept - 1;
                 shuffle(dp)
@@ -63,6 +76,7 @@
         return Number(y);
     }
 
+
     var swapTiles = function (tile1, tile2) {
         var tile1Child = $("span.tileSpan", tile1);
         var tile2Child = $("span.tileSpan", tile2);
@@ -80,18 +94,22 @@
         var emptyTileY = getY(emptyTile);
         if (x + 1 === emptyTileX && y === emptyTileY) {
             swapTiles(tile, emptyTile);
+            history.push(2);
         }
 
         if (x - 1 === emptyTileX && y === emptyTileY) {
             swapTiles(tile, emptyTile);
+            history.push(0);
         }
 
         if (x === emptyTileX && y + 1 === emptyTileY) {
             swapTiles(tile, emptyTile);
+            history.push(3);
         }
 
         if (x === emptyTileX && y - 1 === emptyTileY) {
             swapTiles(tile, emptyTile);
+            history.push(1);
         }
     }
 
@@ -126,6 +144,7 @@
 
     return {
         init: init,
-        clickTile: clickTile
+        clickTile: clickTile,
+        back: historyBack,
     };
 })();
