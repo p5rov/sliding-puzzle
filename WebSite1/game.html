@@ -11,11 +11,11 @@
 <div class="board" id="gameBoard">
 </div>
 <div id="settings">
-    <input type="button" value="Init" onclick="Game.init(4)"/>
+    <input type="button" class="btn" value="Settings" onclick="Game.init(4)"/>
 </div>
 <div id="templates" style="display: none;">
     <div id="tileTemplates">
-        <div class="tile">
+        <div class="tile" onclick="Game.clickTile(this)">
             <span class="tileSpan"></span>
         </div>
 		<div class="row" />
