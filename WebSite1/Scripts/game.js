@@ -51,8 +51,8 @@
             history.push(randomNumber);
             setTimeout(function () {
                 var dp = dept - 1;
-                shuffle(dp)
-            },
+                    shuffle(dp);
+                },
                 300);
         }
         else {
@@ -128,6 +128,9 @@
                 tileValueElement.attr("id", "value" + value);
                 if (value !== emptyValue) {
                     tileValueElement.html(value);
+                } else {
+                    tileValueElement.html("");
+                    tileValueElement.addClass("emptyTile");
                 }
      
                 tileValueElement.attr('data-value', value);
@@ -148,3 +151,40 @@
         back: historyBack,
     };
 })();
+
+var showMenu = function() {
+    $("#menu").removeClass("hidden");
+    $("#menuButtons").removeClass("hidden");
+};
+
+var hideMenu = function () {
+    $("#menu").addClass("hidden");
+    $("#menuButtons").addClass("hidden");
+};
+
+var showGame = function () {
+    $("#gameBoard").removeClass("hidden");
+    $("#gameButtons").removeClass("hidden");
+};
+
+var hideGame = function () {
+    $("#gameBoard").addClass("hidden");
+    $("#gameButtons").addClass("hidden");
+};
+
+
+window.onload = function() {
+    document.getElementById("menuButton").addEventListener("click",
+        function () {
+            hideGame();
+            showMenu();
+        });
+    document.getElementById("startButton").addEventListener("click",
+        function() {
+            hideMenu();
+            showGame();
+            var size = $("#size").val();
+            Game.init(size);
+        });
+
+};

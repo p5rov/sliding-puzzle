@@ -8,18 +8,24 @@
     <title></title>
 </head>
 <body>
-<div class="board" id="gameBoard">
+<div class="board">
+    <div id="gameBoard" class="gameBoard">
+    </div>
+    <div id="menu" class="hidden">
+        <div>
+            <label>Size:</label>
+            <input type="number" id="size">
+        </div>
+    </div>
 </div>
- <div>
-     <div>
-         <label>Size:</label>
-         <input type="number" id="size">
-     </div>
+<div id="buttons">
+    <div id="gameButtons" class="buttonsRow">
+        <input type="button" class="btn" id="menuButton" value="Menu" />
+    </div>
+    <div id="menuButtons" class="buttonsRow">
+        <input type="button" class="btn" id="startButton" value="Start" />
+    </div>
 </div>
- <div id="settings">
-     <input type="button" class="btn" value="Settings" onclick="Game.init(4)" />
-     <input type="button" class="btn" value="back" onclick="Game.back()" />
- </div>
 <div id="templates" style="display: none;">
     <div id="tileTemplates">
         <div class="tile" onclick="Game.clickTile(this)">
