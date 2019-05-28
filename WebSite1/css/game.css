@@ -1,16 +1,19 @@
-﻿body {
-}
-
+﻿
 .board {
-	display: flex;
-	align-items: stretch;
-	flex-direction: column;
-    border-radius: 1em;
+	border-radius: 1em;
     margin: auto;
     border: solid;
     width: 90vmin;
     height: 90vmin;
+}
 
+.gameBoard {
+    display: flex;
+    align-items: stretch;
+    flex-direction: column;
+    margin: auto;
+    width: 90vmin;
+    height: 90vmin;
 }
 
 .row {
@@ -19,6 +22,7 @@
 	flex-direction: row;
 	align-items: stretch;
     flex: 1;
+    background-color: black
 }
 
 .tile {
@@ -31,17 +35,34 @@
     justify-content: center;
     text-align: center;
     font-size: 2em;
+    background-color: red;
 }
 
-#settings {
+.emptyTile {
+    background-color: black;
+    width: 100%;
+    height: 100%;
+}
+
+.buttonsRow {
     justify-content: center;
     height: 8vh;
-    width: 90vw;
+    width: 90vmin;
     margin: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
 }
+
+.btn {
+    flex: 1;
+}
+
+
+.hidden {
+    display: none;
+}
+
 
 input {
     height: 36px;
