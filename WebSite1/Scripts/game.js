@@ -84,6 +84,20 @@
         tile2Child.detach().appendTo('#' + $(tile1).attr('id'));
     }
 
+    var checkCompleted = function () {
+        var completed = isCompleted();
+        if (completed) {
+            showCompleted();
+        }
+    };
+
+    var showCompleted = function () {
+        var board = $("#gameBoard");
+        board.empty();
+        var winner = $("#templates .winner").clone();
+        board.append(winner);
+    }
+
     var clickTile = function (event) {
         event = event || window.event;
         var tile = event;
@@ -111,6 +125,32 @@
             swapTiles(tile, emptyTile);
             history.push(1);
         }
+
+        checkCompleted();
+    }
+
+    var solve = function () {
+        if (history.length > 0) {
+            setTimeout(function () {
+                historyBack();
+                solve();
+            },
+                300);
+        }
+    };
+
+    var isCompleted = function () {
+        var slots = $('[id^=slot]');
+        var completed = true;
+        for (index = 0; index < slots.length; ++index) {
+            var x = getX(slots[index]);
+            var y = getY(slots[index]);
+            var value = getValue(slots[index]);
+            var slotExpectedValue = x * boardSize + y + 1;
+            completed = completed & slotExpectedValue === value;
+        }
+
+        return completed;
     }
 
     var init = function (size) {
@@ -149,6 +189,7 @@
         init: init,
         clickTile: clickTile,
         back: historyBack,
+        solve: solve
     };
 })();
 
@@ -187,4 +228,10 @@ window.onload = function() {
             Game.init(size);
         });
 
+    document.getElementById("solve").addEventListener("click",
+        function () {
+            hideMenu();
+            showGame();
+            Game.solve();
+        });
 };
