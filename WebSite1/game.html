@@ -11,14 +11,18 @@
 <div class="board">
     <div id="gameBoard" class="gameBoard">
     </div>
-    <div id="menu" class="hidden">
-        <div>
-            <label>Size:</label>
-            <input type="number" id="size">
-        </div>
-        <div>
-            <input type="button" id="solve">
-        </div>
+    <div id="menu" class="menu hidden">
+            <div class="menurow">
+                <label class="menulabel">Size:</label>
+                <input class="menuinput" type="number" max="9" min="2" id="size">
+            </div>
+            <div class="menurow">
+                <label class="menulabel">Shuffle times:</label>
+                <input class="menuinput" type="number" min="0" max="1000" id="shuffleTimes">
+            </div>
+            <div class="menurow">
+                <input type="button" class="menubtn" value="Solve" id="solve">
+            </div>
     </div>
 </div>
 <div id="buttons">
@@ -37,7 +41,7 @@
 		<div class="row" />
     </div>
     <div class="winner">
-        Good Job!
+        <label>Good Job!</label>
     </div>
 </div>
 </body>

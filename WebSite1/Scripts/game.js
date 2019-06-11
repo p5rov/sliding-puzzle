@@ -182,7 +182,8 @@
             }
         }
 
-        shuffle(30);
+        var shuffleTimes = $("#shuffleTimes").val();
+        shuffle(shuffleTimes);
     }
 
     return {
