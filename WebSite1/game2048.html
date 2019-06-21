@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <link href="css/game2048.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.4.1.min.js"></script>
+    <script src="Scripts/game2048.js"></script>
+    <title>2048</title>
+</head>
+<body>
+<div class="board">
+    <div id="gameBoard" class="gameBoard">
+    </div>
+    <div id="menu" class="menu hidden">
+        <div class="menurow">
+            <label class="menulabel">Size:</label>
+            <input class="menuinput" type="number" max="9" min="2" id="size">
+        </div>
+        <div class="menurow">
+            <label class="menulabel">Shuffle times:</label>
+            <input class="menuinput" type="number" min="0" max="1000" id="shuffleTimes">
+        </div>
+        <div class="menurow">
+            <input type="button" class="menubtn" value="Solve" id="solve">
+        </div>
+    </div>
+</div>
+<div id="templates" style="display: none;">
+    <div id="tileTemplates">
+        <div class="tile" onclick="Game.clickTile(this)">
+            <span class="tileSpan"></span>
+        </div>
+        <div class="row" />
+    </div>
+    <div class="winner">
+        <label>Good Job!</label>
+    </div>
+</div>
+</body>
+</html>
