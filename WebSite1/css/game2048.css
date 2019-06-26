@@ -3,21 +3,25 @@
 }
 
 
-.board {
-	border-radius: 10px;
-    margin: auto;
-    border: solid;
-    width: 90vmin;
-    height: 90vmin;
+.container {
+    display:flex;
+    flex-wrap: wrap;
 }
+
 
 .gameBoard {
     display: flex;
     align-items: stretch;
     flex-direction: column;
     margin: auto;
-    width: 90vmin;
-    height: 90vmin;
+    width: 98vmin;
+    height: 98vmin;
+    flex: 1;
+}
+
+.scores {
+    flex: 1;
+    font-size: 2rem;
 }
 
 .row {
@@ -26,7 +30,7 @@
 	flex-direction: row;
 	align-items: stretch;
     flex: 1;
-    background-color: black;
+    background-color: beige;
 }
 
 .menu {
@@ -34,7 +38,8 @@
     margin: 0 auto;
     padding: 0 16px;
     display: flex;
-    flex-direction: column;
+    flex: 1;
+    flex-wrap: wrap;
 }
 
 .menulabel {
@@ -59,7 +64,6 @@
 
 .tile {
     border: solid;
-    border-radius: 10px;
     margin: 5px;
     flex: 1;
     display: flex;
@@ -67,12 +71,60 @@
     justify-content: center;
     text-align: center;
     font-size: 2em;
-    background-color: red;
 }
+
+[data-value="2"] {
+    background-color: #FFA07A;
+}
+
+[data-value="4"] {
+    background-color: #FA8072;
+}
+
+[data-value="8"] {
+    background-color: #E9967A;
+}
+
+[data-value="16"] {
+    background-color: #F08080;
+}
+
+[data-value="32"] {
+    background-color: #CD5C5C;
+}
+
+[data-value="64"] {
+    background-color: #DC143C;
+}
+
+[data-value="128"] {
+    background-color: #B22222;
+}
+
+[data-value="256"] {
+    background-color: #FF0000;
+}
+
+[data-value="512"] {
+    background-color: #8B0000;
+}
+
+[data-value="1024"] {
+    background-color: #FF6347;
+}
+
+[data-value="2048"] {
+    background-color: #FF4500;
+}
+
+
+[data-value="2048"] {
+    background-color: #DB7093;
+}
+
 
 .winner {
     border: solid;
-    border-radius: 1em;
     margin: 5px;
     flex: 1;
     display: flex;
@@ -83,7 +135,6 @@
 }
 
 .emptyTile {
-    background-color: black;
     width: 100%;
     height: 100%;
 }

@@ -8,32 +8,31 @@
     <title>2048</title>
 </head>
 <body>
-<div class="board">
-    <div id="gameBoard" class="gameBoard">
+    <div class="container">
+        <div class="board">
+            <div id="gameBoard" class="gameBoard">
+            </div>
+        </div>
+        <div id="menu" class="menu">
+            <div class="menurow">
+                <h2><label class="menulabel">Score:</label></h2>
+                <h3><label class="menulabel" id="scores">0</label></h3>
+            </div>
+            <div class="menurow">
+                <h2><label class="menulabel">Time:</label></h2>
+                <h3><label class="menulabel" id="time">00</label></h3>
+            </div>
+        </div>
     </div>
-    <div id="menu" class="menu hidden">
-        <div class="menurow">
-            <label class="menulabel">Size:</label>
-            <input class="menuinput" type="number" max="9" min="2" id="size">
-        </div>
-        <div class="menurow">
-            <label class="menulabel">Shuffle times:</label>
-            <input class="menuinput" type="number" min="0" max="1000" id="shuffleTimes">
-        </div>
-        <div class="menurow">
-            <input type="button" class="menubtn" value="Solve" id="solve">
-        </div>
-    </div>
-</div>
-<div id="templates" style="display: none;">
+    <div id="templates" style="display: none;">
     <div id="tileTemplates">
-        <div class="tile" onclick="Game.clickTile(this)">
+        <div class="tile">
             <span class="tileSpan"></span>
         </div>
         <div class="row" />
     </div>
     <div class="winner">
-        <label>Good Job!</label>
+        <label>Game Over!</label>
     </div>
 </div>
 </body>
