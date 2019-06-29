@@ -98,11 +98,12 @@
                     } else if (value === 0 && tile2Value !== 0) {
                         setValue(tile, tile2Value + value);
                         setValue(tile2, 0);
+                    } else if (value !== 0 && tile2Value !== 0 && tile2Value !== value) {
+                        break;
                     }
                 }
             }
         }
-        onAfterMove();
     }
 
     var moveRight = function () {
@@ -121,11 +122,12 @@
                     } else if (value === 0 && tile2Value !== 0) {
                         setValue(tile, tile2Value + value);
                         setValue(tile2, 0);
+                    } else if (value !== 0 && tile2Value !== 0 && tile2Value !== value) {
+                        break;
                     }
                 }
             }
         }
-        onAfterMove();
     }
     
     var moveUp = function () {
@@ -144,12 +146,12 @@
                     } else if (value === 0 && tile2Value !== 0) {
                         setValue(tile, tile2Value + value);
                         setValue(tile2, 0);
+                    } else if (value !== 0 && tile2Value !== 0 && tile2Value !== value) {
+                        break;
                     }
                 }
             }
         }
-
-        onAfterMove();
     }
 
     var moveDown = function () {
@@ -168,12 +170,12 @@
                     } else if (value === 0 && tile2Value !== 0) {
                         setValue(tile, tile2Value + value);
                         setValue(tile2, 0);
+                    } else if (value !== 0 && tile2Value !== 0 && tile2Value !== value) {
+                        break;
                     }
                 }
             }
         }
-
-        onAfterMove();
     }
     
     var canMove = function () {
@@ -229,22 +231,6 @@
         }
     }
 
-    var checkKey = function (e) {
-        e = e || window.event;
-
-        if (e.keyCode == '38') {
-            moveUp();
-        }
-        else if (e.keyCode == '40') {
-            moveDown();
-        }
-        else if (e.keyCode == '37') {
-            moveLeft();
-        }
-        else if (e.keyCode == '39') {
-            moveRight();
-        }
-    }
 
     var onAfterMove = function () {
         addRandomElements();
@@ -252,6 +238,23 @@
         startTimer();
         if (isFull() && !canMove()) {
             showCompleted();
+        }
+    }
+
+    var checkKey = function (e) {
+        e = e || window.event;
+
+        if (e.keyCode == '38') {
+            $.when(moveUp()).then(onAfterMove());
+        }
+        else if (e.keyCode == '40') {
+            $.when(moveDown()).then(onAfterMove());
+        }
+        else if (e.keyCode == '37') {
+            $.when(moveLeft()).then(onAfterMove());
+        }
+        else if (e.keyCode == '39') {
+            $.when(moveRight()).then(onAfterMove());
         }
     }
 
